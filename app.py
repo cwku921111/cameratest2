@@ -139,3 +139,26 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     print("✅ Flask app running with MongoDB, Cloudinary, and tongue region analysis integration.")
     app.run(host="0.0.0.0", port=port)
+    from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/quiz")
+def quiz():
+    return render_template("quiz.html")
+
+@app.route("/submit_quiz", methods=["POST"])
+def submit_quiz():
+    q1 = request.form.get("q1")
+    q2 = request.form.get("q2")
+
+    # 判斷正確與否（你可根據需要設計）
+    correct_answers = {"q1": "偏白", "q2": "剝落"}
+    score = 0
+    if q1 == correct_answers["q1"]:
+        score += 1
+    if q2 == correct_answers["q2"]:
+        score += 1
+
+    return f"<h2>你總共答對 {score} / 2 題</h2><p>第1題你的答案是：{q1}<br>第2題你的答案是：{q2}</p>"
+
