@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>舌苔問答</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f8f8f8; padding: 2rem; }
+    img { width: 80%; max-width: 300px; border-radius: 10px; margin-bottom: 1rem; }
+    form { background: #fff; padding: 2rem; border-radius: 10px; max-width: 500px; margin: auto; }
+    label { display: block; text-align: left; margin: 0.5rem 0; }
+    button { margin-top: 1.5rem; padding: 0.6rem 1.2rem; font-size: 1rem; background: #4a90e2; color: white; border: none; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h2>🧠 舌苔問答小測驗</h2>
+
+  <form action="/submit_quiz" method="POST">
+    <p><b>第 1 題：</b>這張舌苔屬於哪一種？</p>
+    <img src="{{ url_for('static', filename='quiz/image1.jpg') }}" alt="舌苔圖片 1">
+    <label><input type="radio" name="q1" value="正常" required> 正常</label>
+    <label><input type="radio" name="q1" value="偏白"> 偏白</label>
+    <label><input type="radio" name="q1" value="偏黃"> 偏黃</label>
+    <label><input type="radio" name="q1" value="厚膩"> 厚膩</label>
+
+    <hr style="margin:2rem 0;">
+
+    <p><b>第 2 題：</b>以下哪個舌苔是剝落？</p>
+    <img src="{{ url_for('static', filename='quiz/image2.jpg') }}" alt="舌苔圖片 2">
+    <label><input type="radio" name="q2" value="正常" required> 正常</label>
+    <label><input type="radio" name="q2" value="剝落"> 剝落</label>
+    <label><input type="radio" name="q2" value="偏紅"> 偏紅</label>
+    <label><input type="radio" name="q2" value="厚膩"> 厚膩</label>
+
+    <button type="submit">提交答案</button>
+  </form>
+</body>
+</html>
